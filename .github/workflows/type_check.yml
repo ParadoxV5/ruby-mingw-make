@@ -1,13 +1,13 @@
 name: Check Types with Steep
 on:
   push:
-    paths: [.github/workflows/type_check.yml, lib/**, sig/**, Gemfile, '*.gemspec']
+    paths: [.github/workflows/type_check.yml, lib/**, Gemfile, '*.gemspec']
   pull_request:
-    paths: [.github/workflows/type_check.yml, lib/**, sig/**, Gemfile, '*.gemspec']
+    paths: [.github/workflows/type_check.yml, lib/**, Gemfile, '*.gemspec']
 jobs:
   
   type_check:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     timeout-minutes: 5
     steps:
 
@@ -19,9 +19,6 @@ jobs:
       with:
         ruby-version: '3'
         bundler-cache: true
-    
-    - name: Collect RBS
-      run: bundle exec rbs collection install
     
     - name: Check Types with Steep
       run: bundle exec steep check
