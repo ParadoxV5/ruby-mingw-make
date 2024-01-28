@@ -12,14 +12,13 @@ Gem::Specification.new do|spec|
   spec.homepage = github
   spec.metadata = {
     'homepage_uri'      => spec.homepage,
-    'source_code_uri'   => github,
     'changelog_uri'     => File.join(github, 'releases'),
     'bug_tracker_uri'   => File.join(github, 'issues'),
     'funding_uri'       => File.join('https://github.com/sponsors', github_account),
-    'documentation_uri' => spec.homepage
   }
 
   spec.files = Dir['**/*']
   
+  spec.platform = 'x64-mingw-ucrt'
   spec.required_ruby_version = '~> 3.1'
 end
