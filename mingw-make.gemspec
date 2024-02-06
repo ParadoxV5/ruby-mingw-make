@@ -8,13 +8,12 @@ Gem::Specification.new do|spec|
   spec.license = 'WTFPL'
   
   github_account = spec.author
-  github = File.join 'https://github.com', github_account, spec.name
-  spec.homepage = github
+  github = "https://github.com/#{github_account}/#{spec.name}"
   spec.metadata = {
-    'homepage_uri'      => spec.homepage,
+    'homepage_uri'      => spec.homepage = github,
     'changelog_uri'     => File.join(github, 'releases'),
     'bug_tracker_uri'   => File.join(github, 'issues'),
-    'funding_uri'       => File.join('https://github.com/sponsors', github_account),
+    'funding_uri'       => "https://github.com/sponsors/#{github_account}"
   }
 
   spec.files = Dir['**/*']
