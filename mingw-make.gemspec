@@ -2,13 +2,13 @@
 
 Gem::Specification.new do|spec|
   spec.name = 'mingw-make'
-  spec.summary = 'Patch & shim to enable Windows Ruby to install C extension gems with MinGW without MSYS2 (Devkit)'
+  spec.summary = 'Patches that enable Windows Ruby to install C extension gems with MinGW without MSYS2 (Devkit)'
   spec.version = '1.0.0'
   spec.author = 'ParadoxV5'
   spec.license = 'WTFPL'
   
   github_account = spec.author
-  github = "https://github.com/#{github_account}/#{spec.name}"
+  github = "https://github.com/#{github_account}/ruby-#{spec.name}"
   spec.metadata = {
     'homepage_uri'      => spec.homepage = github,
     'changelog_uri'     => File.join(github, 'releases'),
@@ -20,4 +20,8 @@ Gem::Specification.new do|spec|
   
   spec.platform = 'x64-mingw-ucrt'
   spec.required_ruby_version = '~> 3.1'
+  spec.requirements = [
+    'Windows RubyInstaller2 without DevKit (MSYS2)',
+    'MinGW'
+  ]
 end
