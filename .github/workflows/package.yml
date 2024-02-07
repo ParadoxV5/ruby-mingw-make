@@ -2,8 +2,8 @@ name: Package with RubyGems
 on: {release: {types: [published]}}
 jobs:
   package:
-    runs-on: ubuntu-latest
-    timeout-minutes: 2
+    runs-on: windows-latest
+    timeout-minutes: 5
     steps:
     
     - uses: actions/checkout@v4
@@ -12,6 +12,7 @@ jobs:
     
     - uses: ruby/setup-ruby@v1
       with:
+        windows-toolchain: 'none'
         ruby-version: '3'
     
     - name: Package Gem
