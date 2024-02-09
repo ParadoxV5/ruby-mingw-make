@@ -21,7 +21,7 @@ Gem::Specification.new do|spec|
   spec.platform = 'x64-mingw-ucrt'
   spec.required_ruby_version = '~> 3.1'
   spec.requirements = [
-    'Windows RubyInstaller2 without DevKit (MSYS2)',
-    'MinGW'
+    'Ruby from RubyInstaller2 for Windows without DevKit (MSYS2)',
+    'UCRT MinGW'
   ]
 end
