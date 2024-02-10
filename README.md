@@ -11,9 +11,9 @@ all it took was a couple of quick hacks and we have ourselves a lightweight Devk
 Setups with MinGW and RubyInstaller’s prebuilds with these patches are ideal to keep footprints small,
 for experts strongly recommend WSL for a fully-fledged Ruby environment.
 
-This project is a newly published experiment, and I have only tested with `bigdecimal-3.1.6`. In theory,
-it’s compatible with anything that doesn’t leave [`mkmf`](https://rubyapi.org/o/MakeMakefile)’s comfort zone.
-(It also *will indeed* “take a while” when “Building native extensions”.)
+This is a newly published experiment; I have only tested with a couple of projects, `bigdecimal-3.1.6` among them.
+In theory, it’s compatible with anything that doesn’t leave [`mkmf`](https://rubyapi.org/o/MakeMakefile)’s comfort zone,
+which I expect to be the majority of C-based gems. (It *will indeed* “take a while” when “Building native extensions”.)
 Please do [let me know](https://github.com/ParadoxV5/ruby-mingw-make/issues)
 if it doesn’t meet the expectations on something not unusual.
 
