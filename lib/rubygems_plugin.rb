@@ -17,4 +17,4 @@ else
   end
 end
 
-Gem.pre_install { require_relative 'mingw-make' }
+Gem.pre_install { require_relative 'mingw-make' or nil }
