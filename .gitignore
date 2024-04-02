@@ -1,7 +1,7 @@
+# VSCode
+.vscode/
 # JetBrains
-/.idea/
+.idea/
 
 # Ruby
-/.gem_rbs_collection/
-/Gemfile.lock
-/rbs_collection.lock.yaml
+Gemfile.lock
