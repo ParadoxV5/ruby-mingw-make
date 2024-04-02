@@ -3,7 +3,7 @@
 Gem::Specification.new do|spec|
   spec.name = 'mingw-make'
   spec.summary = 'Patches that enable Windows Ruby to install C extension gems with MinGW without MSYS2 (Devkit)'
-  spec.version = '1.0.0'
+  spec.version = '1.1.0'
   spec.author = 'ParadoxV5'
   spec.license = 'WTFPL'
   
@@ -17,6 +17,7 @@ Gem::Specification.new do|spec|
   }
 
   spec.files = Dir['**/*']
+  spec.executable = 'make'
   
   spec.platform = 'x64-mingw-ucrt'
   spec.required_ruby_version = '~> 3.1'

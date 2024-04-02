@@ -1,0 +1,2 @@
+#!ruby
+exec 'mingw32-make', *ARGV

@@ -2,4 +2,4 @@
 
 # Set up `RUBYOPT=-I/absolute/path/to/lib/mingw-make/` for subprocesses
 ENV['RUBYOPT'] = "#{ENV['RUBYOPT']} -I#{File.join __dir__, 'mingw-make'}"
-ENV['MAKE'] ||= 'mingw32-make'
+ENV['MAKE'] ||= 'make'
