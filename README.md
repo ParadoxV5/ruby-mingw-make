@@ -11,11 +11,36 @@ all it took was a couple of quick hacks and we have ourselves a lightweight Devk
 Setups with MinGW and RubyInstaller’s prebuilds with these patches are ideal to keep footprints small,
 for experts strongly recommend WSL for a fully-fledged Ruby environment.
 
-This is a newly published experiment; I have only tested with a couple of projects, `bigdecimal-3.1.6` among them.
+### Compatibility
+
+This is a newly published experiment; I have only tested with the following projects.
 In theory, it’s compatible with anything that doesn’t leave [`mkmf`](https://rubyapi.org/o/MakeMakefile)’s comfort zone,
 which I expect to be the majority of C-based gems. (It *will indeed* “take a while” when “Building native extensions”.)
 Please do [let me know](https://github.com/ParadoxV5/ruby-mingw-make/issues)
 if it doesn’t meet the expectations on something not unusual.
+
+#### builds
+* `bigdecimal 3.1.6..3.1.7`
+* `json 2.7.2`
+* `io-console 0.7.2`
+* `nkf 0.2.0`
+* `strscan 3.1.0`
+* `debug 1.9.2`
+* `racc 1.7.3`
+
+#### fails
+* `prism 0.24.0`:
+  > * It must be possible to build prism without needing ruby/rake/etc.
+  >   Because once prism is the single parser in TruffleRuby, JRuby or CRuby there won't be another Ruby parser around to parse such Ruby code.
+  >   \[…]
+  > 
+  > The main solution for the second point seems a Makefile, otherwise many of the usages would have to duplicate the logic to build prism.
+  > ⸺ https://github.com/ruby/prism/blob/19c67fb/docs/build_system.md#requirements
+* `ffi 1.16.3`: see also https://github.com/ffi/ffi/issues/1091
+
+### not thoroughly tested
+* `syslog 0.1.2`: [It’s UNIX-specific.](https://stackoverflow.com/a/9503254)
+* `readline-ext 0.2.0`: ``extconf.rb:64:in `<main>': Neither readline nor libedit was found (RuntimeError)``
 
 
 ## Setup
@@ -32,9 +57,6 @@ if it doesn’t meet the expectations on something not unusual.
 ```sh
 gem install mingw-make
 ```
-
-
-## Usage
 
 ### Use with `gem`
 
