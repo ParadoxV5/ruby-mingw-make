@@ -4,17 +4,18 @@ However, [__Minimum__ GNU for Windows (MinGW)](https://github.com/niXman/mingw-b
 a key component of MSYS2, is sufficient for half of the jobs all on its own.
 
 `mingw-make` is a set of tiny non-intrusive mods for [RubyInstaller2 for Windows](https://rubyinstaller.org)
-that solves the hurdles on the other half minimally.
+that solves the hurdles on the other half minimally, namely by replacing `rbconfig` entries of compilation commands.
 With the aid of the secret [`ruby -run`](https://github.com/ruby/un) capability it has unleashed,
 all it took was a couple of quick hacks and we have ourselves a lightweight Devkit.
 
 Setups with MinGW and RubyInstaller’s prebuilds with these patches are ideal to keep footprints small,
-for experts strongly recommend WSL for a fully-fledged Ruby environment.
+though experts strongly recommend WSL for a fully-fledged Ruby environment.
 
 ### Compatibility
 
 This is a newly published experiment; I have only tested with the following projects.
-In theory, it’s compatible with anything that doesn’t leave [`mkmf`](https://rubyapi.org/o/MakeMakefile)’s comfort zone,
+In theory, it’s compatible with anything that doesn’t leave
+[`rbconfig`](https://rubyapi.org/o/RbConfig)+[`mkmf`](https://rubyapi.org/o/MakeMakefile)’s comfort zone,
 which I expect to be the majority of C-based gems. (It *will indeed* “take a while” when “Building native extensions”.)
 Please do [let me know](https://github.com/ParadoxV5/ruby-mingw-make/issues)
 if it doesn’t meet the expectations on something not unusual.
@@ -74,10 +75,15 @@ end
 ```
 
 ### Use manually
-Specify `mingw32-make` as the `MAKE` tool and prepend the `lib/mingw-make/mkmf.rb` script to the Ruby `$LOAD_PATH`.
+*Prepend* (so it takes precedence) the [`lib/mingw-make/mkmf.rb`](lib/mingw-make/mkmf.rb)
+script to the Ruby `$LOAD_PATH`. Because RubyGems `require 'rbconfig'`,
+we must explicitly apply [the `rbconfig` replacements](lib/mingw-make/rbconfig-patch.rb).
+```bat
+set RUBYOPT=-Ipath/to/gems/mingw-make/lib/mingw-make/ -rrbconfig-patch
+```
+You may also need to specify a fallback for the `MAKE` tool, e.g.:
 ```bat
 set MAKE=mingw32-make
-set RUBYOPT=-Ipath/to/gems/mingw-make/lib/mingw-make/
 ```
 
 
