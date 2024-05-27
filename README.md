@@ -13,7 +13,10 @@ though experts strongly recommend WSL for a fully-fledged Ruby environment.
 
 ### Compatibility
 
-This is a newly published experiment; I have only tested with the following projects.
+I’m glad to announce that, except for Prism for which I have sent PRs,
+**this experiment works with `gem update` versions of every [Default and Bundled C extension](https://stdgems.org) 📈**.
+
+While I have only tested this experiment with the following projects,
 In theory, it’s compatible with anything that doesn’t leave
 [`rbconfig`](https://rubyapi.org/o/RbConfig)+[`mkmf`](https://rubyapi.org/o/MakeMakefile)’s comfort zone,
 which I expect to be the majority of C-based gems. (It *will indeed* “take a while” when “Building native extensions”.)
@@ -21,23 +24,27 @@ Please do [let me know](https://github.com/ParadoxV5/ruby-mingw-make/issues)
 if it doesn’t meet the expectations on something not unusual.
 
 #### builds
-* `bigdecimal 3.1.6..3.1.7`
+
+* `bigdecimal 3.1.6..3.1.8`
 * `json 2.7.2`
 * `io-console 0.7.2`
 * `nkf 0.2.0`
+* [`prism 9bb8710`](https://github.com/ruby/prism/pull/2711)
 * `strscan 3.1.0`
 * `debug 1.9.2`
-* `racc 1.7.3`
+* `racc 1.7.3..1.8.0`
+* `rbs 3.4.4`
 
 #### fails
-* `prism 0.24.0`:
+* `prism ..0.29.0`:
   > * It must be possible to build prism without needing ruby/rake/etc.
   >   Because once prism is the single parser in TruffleRuby, JRuby or CRuby there won't be another Ruby parser around to parse such Ruby code.
   >   \[…]
   > 
   > The main solution for the second point seems a Makefile, otherwise many of the usages would have to duplicate the logic to build prism.
+  > 
   > ⸺ https://github.com/ruby/prism/blob/19c67fb/docs/build_system.md#requirements
-* `ffi 1.16.3`: see also https://github.com/ffi/ffi/issues/1091
+* `ffi` (the platform-agnostic edition; though Ruby should auto-prefer [the fat binary gem](https://rubygems.org/gems/ffi/versions/1.17.0.rc2-x64-mingw-ucrt) instead)
 
 ### not thoroughly tested
 * `syslog 0.1.2`: [It’s UNIX-specific.](https://stackoverflow.com/a/9503254)
