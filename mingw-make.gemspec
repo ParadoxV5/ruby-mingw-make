@@ -15,8 +15,8 @@ Gem::Specification.new do|spec|
     'bug_tracker_uri'   => File.join(github, 'issues'),
     'funding_uri'       => "https://github.com/sponsors/#{github_account}"
   }
-
-  spec.files = Dir['**/*']
+  
+  spec.files = Dir['**/*'].grep_v 'Gemfile'
   spec.executable = 'make'
   
   spec.platform = 'x64-mingw-ucrt'
