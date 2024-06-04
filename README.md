@@ -27,14 +27,15 @@ if it doesn’t meet the expectations on something not unusual.
 
 * __`railties 7.1.3`__
   * `bigdecimal 3.1.6..3.1.8`
-  * `racc 1.7.3..1.8.0`
   * `io-console 0.7.2`
-* `json 2.7.2`
+  * `racc 1.7.3..1.8.0`
+* __`steep 1.6.0`__
+  * `json 2.7.2`
+  * `debug 1.9.2`
+  * `rbs 3.4.4`
+  * `strscan 3.1.0`
 * `nkf 0.2.0`
 * [`prism 9bb8710`](https://github.com/ruby/prism/pull/2711)
-* `strscan 3.1.0`
-* `debug 1.9.2`
-* `rbs 3.4.4`
 
 #### fails
 * `prism ..0.29.0`:
@@ -45,11 +46,7 @@ if it doesn’t meet the expectations on something not unusual.
   > The main solution for the second point seems a Makefile, otherwise many of the usages would have to duplicate the logic to build prism.
   > 
   > ⸺ https://github.com/ruby/prism/blob/19c67fb/docs/build_system.md#requirements
-* `ffi` (the platform-agnostic edition)
-  * RubyGems will instead prefer [the prebuilt gem](https://rubygems.org/gems/ffi/versions/1.17.0.rc2-x64-mingw-ucrt)
-    once it leaves RC. For now, you can join the preview manually with `gem install --prerelease ffi`.
-    * This transitive dependency is the last obstable before
-      [`steep`](https://github.com/soutaro/steep) becomes available!
+* `ffi ...1.17` (Prebuilt gems are available est. [1.17.0](https://rubygems.org/gems/ffi/versions/1.17.0).rc.)
 
 ### not thoroughly tested
 * `syslog 0.1.2`: [It’s UNIX-specific.](https://stackoverflow.com/a/9503254)
